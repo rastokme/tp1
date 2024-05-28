@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: db
+    image: postgres:14.1-alpine
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: usr
+      POSTGRES_PASSWORD: pwd
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+
+  simple-api:
+    container_name: simple-api
+    build: ./simple-api
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  httpd:
+    container_name: httpd
+    build: ./httpd
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    depends_on:
+      - simple-api
+
+networks:
+  app-network:
+
+volumes:
+  pgdata:

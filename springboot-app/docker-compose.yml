@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:14.1-alpine
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: usr
+      POSTGRES_PASSWORD: pwd
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+
+  adminer:
+    image: adminer
+    ports:
+      - "8090:8080"
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  springboot-app:
+    build: ./springboot-app
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+networks:
+  app-network:
+
+volumes:
+  pgdata:
