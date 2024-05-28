@@ -28,23 +28,12 @@ jobs:
     - name: Build and push Docker images
       uses: docker/build-push-action@v2
       with:
-        context: ./httpd
-        push: true
-        tags: rastokmeepf/tp1-httpd:latest
-
-    - name: Build and push simple-api image
-      uses: docker/build-push-action@v2
-      with:
-        context: ./other-services
-        push: true
-        tags: rastokmeepf/tp1-simple-api:latest
-
-    - name: Build and push database image
-      uses: docker/build-push-action@v2
-      with:
         context: .
         push: true
-        tags: rastokmeepf/tp1-db:latest
+        tags: |
+          rastokmeepf/tp1-httpd:latest
+          rastokmeepf/tp1-simple-api:latest
+          rastokmeepf/tp1-db:latest
 
     - name: Run tests
       run: |
