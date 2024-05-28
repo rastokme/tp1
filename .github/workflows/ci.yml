@@ -51,11 +51,11 @@ jobs:
       with:
         context: ./db-init
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-db:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/tp-devops-db:latest
 
     - name: Build and push httpd image
       uses: docker/build-push-action@v3
       with:
         context: ./httpd
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-httpd:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/tp-devops-httpd:latest
