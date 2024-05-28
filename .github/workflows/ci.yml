@@ -44,7 +44,7 @@ jobs:
       with:
         context: ./simple-api
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/tp-devops-simple-api:latest
 
     - name: Build and push database image
       uses: docker/build-push-action@v3
