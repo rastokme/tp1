@@ -20,7 +20,7 @@ jobs:
       uses: docker/setup-buildx-action@v1
 
     - name: Log in to Docker Hub
-      uses: docker/login-action@v1
+      uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
@@ -31,9 +31,9 @@ jobs:
         context: .
         push: true
         tags: |
-          yourusername/tp1-httpd:latest
-          yourusername/tp1-simple-api:latest
-          yourusername/tp1-db:latest
+          rastokmeepf/tp1-httpd:latest
+          rastokmeepf/tp1-simple-api:latest
+          rastokmeepf/tp1-db:latest
 
     - name: Run tests
       run: |
