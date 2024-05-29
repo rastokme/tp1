@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - revert-to-afa9f19
   pull_request:
     branches:
       - main
