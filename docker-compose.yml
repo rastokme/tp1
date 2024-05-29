@@ -3,14 +3,13 @@ version: '3.7'
 services:
   db:
     container_name: db
-    image: postgres:14.1-alpine
+    build: ./database
     environment:
       POSTGRES_DB: db
       POSTGRES_USER: usr
       POSTGRES_PASSWORD: pwd
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./db-init:/docker-entrypoint-initdb.d
     networks:
       - app-network
 
