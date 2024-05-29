@@ -24,11 +24,12 @@ jobs:
         java-version: '17'
 
     - name: Build and test with Maven
-      run: mvn clean verify -f simple-api/pom.xml
+      run: mvn -B verify sonar:sonar -Dsonar.projectKey=rastokme_tp1 -Dsonar.organization=rastokme -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./simple-api/pom.xml
 
   build-and-push-docker-image:
     needs: build
     runs-on: ubuntu-22.04
+    
 
     steps:
     - name: Checkout code
