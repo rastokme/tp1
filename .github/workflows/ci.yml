@@ -23,7 +23,8 @@ jobs:
         java-version: '17'
 
     - name: Build and test with Maven
-      run: mvn -B verify sonar:sonar -Dsonar.projectKey=rastokme_tp1 -Dsonar.organization=rastokme -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }} -f ./simple-api/pom.xml
+      run: mvn -B verify sonar:sonar -Dsonar.projectKey=rastokme_tp1 -Dsonar.organization=rastokme -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./simple-api/pom.xml
+
 
   build-and-push-docker-image:
     needs: build
@@ -45,13 +46,6 @@ jobs:
         context: ./simple-api
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/tp-devops-simple-api:latest
-
-    - name: Build and push database image
-      uses: docker/build-push-action@v3
-      with:
-        context: ./db-init
-        push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/tp-devops-db:latest
 
     - name: Build and push httpd image
       uses: docker/build-push-action@v3
