@@ -7,6 +7,7 @@ In this project, an CI/CD pipeline with Docker and Ansible is set up. It is an a
 ## Repository Structure
 
 Structure od the directory is as following:
+```plaintext
 tp1/
 ├── ansible
 │   ├── inventories
@@ -35,6 +36,7 @@ tp1/
 ├── simple-api
 ├── springboot-app
 └── README.md
+```
 
 ## Setup and Deployment
 
