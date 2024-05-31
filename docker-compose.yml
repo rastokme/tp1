@@ -16,8 +16,14 @@ services:
   simple-api:
     container_name: simple-api
     build: ./simple-api
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/db
+      SPRING_DATASOURCE_USERNAME: usr
+      SPRING_DATASOURCE_PASSWORD: pwd
+    
     networks:
       - app-network
+      #vyhodit prec?
     depends_on:
       - db
 
