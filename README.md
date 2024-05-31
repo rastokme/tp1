@@ -1,4 +1,4 @@
-# rastokme DevOps MDE Rastislav Kmet Project
+# rastokme DevOps EPF MDE Rastislav Kmet Project
 
 ## Overview
 
