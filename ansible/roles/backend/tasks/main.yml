@@ -1,0 +1,13 @@
+---
+# tasks file for roles/backend
+- name: create a backend container
+  community.docker.docker_container:
+    name: simple-api
+    image: rastokmeepf/tp-devops-simple-api:latest
+    state: started
+    env:
+        SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/db
+        SPRING_DATASOURCE_USERNAME: usr
+        SPRING_DATASOURCE_PASSWORD: pwd
+    networks:
+      - name: app_network
