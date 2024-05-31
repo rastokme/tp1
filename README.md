@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this project, an CI/CD pipeline with Docker and Ansible is set up. It is an application with backend API, proxy, network and a frontend web server, it si completely deployed by using containerization.
+In this project, an CI/CD pipeline with Docker and Ansible is set up. It is an application with backend API, proxy, network and a frontend web server, it is completely deployed by using containerization.
 
 ## Repository Structure
 
